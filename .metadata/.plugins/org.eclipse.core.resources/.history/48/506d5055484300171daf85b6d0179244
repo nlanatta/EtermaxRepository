@@ -1,0 +1,42 @@
+package com.etermax.rpg.factory;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.exceptions.GameNotFoundException;
+import com.etermax.rpg.model.Game;
+import com.etermax.rpg.model.GameModel;
+import com.etermax.rpg.model.Rules;
+
+@Component
+public class GameFactory {
+	private final HashMap<String, Game> allGames = new HashMap<String, Game>(1);
+	private final GameModel model = new GameModel();
+
+	@Autowired
+	private CharacterFactory characterFactory;
+	
+	private Rules rules;
+
+	public GameFactory() {
+	}
+
+	public Game newGame(String sessionId) {
+		String gameId = "1";// Identifiers.random();
+		Game game = new Game(gameId);
+		game.setRules(rules);
+		model.saveGame(game);
+		return game;
+	}
+
+	public Game getGame(String gameId) throws GameNotFoundException {
+		return model.loadGame(gameId);
+	}
+
+	public void setRulesDefinition(Rules rules) {
+		this.rules = rules;
+	}
+}

@@ -1,0 +1,6 @@
+package com.etermax.rpg.model;
+
+public interface IRule {
+	public boolean canAttack();
+	public boolean isInRange();
+}

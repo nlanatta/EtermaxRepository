@@ -1,0 +1,68 @@
+package com.etermax.rpg.model;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.etermax.rpg.definitions.GameDefinition;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Game {
+
+	private String id;
+	private String name;
+	private ArrayList<Character> characters;
+	private HashMap<String, Character> charactersMap;
+	private Rules rules;
+
+	public Game() {
+	}
+
+	public Game(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Rules getRules() {
+		return rules;
+	}
+
+	public void setRules(Rules rules) {
+		this.rules = rules;
+	}
+
+	public ArrayList<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(ArrayList<Character> characters) {
+		this.characters = characters;
+		charactersMap = new HashMap<String, Character>(); 
+		for (Character character: characters)
+		{
+			charactersMap.put(character.getId(), character);
+		}
+	}
+	
+	public Character getCharacterById(String id)
+	{
+		return charactersMap.get(id);
+	}
+}

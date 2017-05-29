@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characters>
+	<character>
+		<name>
+			pedro
+		</name>
+		<factions>
+			1,2,3,4,5
+		</factions>
+		<level>
+		1
+		</level>
+		<type>
+		Melee
+		</type>
+		<health>
+		1000
+		</health>
+		<rangeAttack>
+		2
+		</rangeAttack>
+	</character>
+	<character>
+		<name>
+			maria
+		</name>
+		<factions>
+			1,2,3,4,5
+		</factions>
+		<level>
+		3
+		</level>
+		<type>
+		Ranged
+		</type>
+		<health>
+		1000
+		</health>
+		<rangeAttack>
+		5
+		</rangeAttack>
+	</character>
+</characters>

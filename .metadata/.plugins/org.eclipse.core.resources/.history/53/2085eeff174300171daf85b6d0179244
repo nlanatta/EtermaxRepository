@@ -1,0 +1,124 @@
+package com.etermax.rpg.model;
+
+import java.util.List;
+
+import com.etermax.rpg.definitions.CharacterDefinition;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Character implements IPlayable {
+	
+	private int id;
+	private List<String> factions;
+	private int level;
+	private String type;
+	private int health;
+	private int rangeAttack;
+	private boolean death = false;
+	
+	public boolean isDeath() {
+		return death;
+	}
+
+	public void setDeath(boolean death) {
+		this.death = death;
+	}
+
+	public Character(CharacterDefinition characterDefinition)
+	{
+		factions = characterDefinition.getFactions();
+		level = characterDefinition.getLevel();
+		type = characterDefinition.getType();
+		health = characterDefinition.getHealth();
+		rangeAttack = characterDefinition.getRangeAttack();
+	}
+
+	public List<String> getFactions() {
+		return factions;
+	}
+
+	public void setFactions(List<String> factions) {
+		this.factions = factions;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getRangeAttack() {
+		return rangeAttack;
+	}
+
+	public void setRangeAttack(int rangeAttack) {
+		this.rangeAttack = rangeAttack;
+	}
+
+	@Override
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void heal(int heal) {
+		if(!isDeath())
+		{
+			health += heal;
+		}
+		
+	}
+
+	@Override
+	public void damage(int damage) {
+		health -= damage;
+		if(health <= 0)
+		{
+			setDeath(true);
+		}
+	}
+	
+	public String getJson()
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		Character obj = this;
+
+		//Object to JSON in String
+		String jsonInString = null;
+		try {
+			jsonInString = mapper.writeValueAsString(obj);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jsonInString;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+}

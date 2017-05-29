@@ -1,0 +1,34 @@
+package com.etermax.rpg.definitions;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "characters")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class CharactersDefinition {
+
+	@XmlElement(name = "character")
+	private List<CharacterDefinition> characters = null;
+
+	private HashMap<String, CharacterDefinition> characterMap;
+
+	public HashMap<String, CharacterDefinition> getCharacterMap() {
+		return characterMap;
+	}
+
+	public List<CharacterDefinition> getCharacters() {
+		return characters;
+	}
+
+	public void initMapCharacters() {
+		characterMap = new HashMap<String, CharacterDefinition>();
+		for (CharacterDefinition character : characters) {
+			characterMap.put(character.getType(), character);
+		}
+	}
+}

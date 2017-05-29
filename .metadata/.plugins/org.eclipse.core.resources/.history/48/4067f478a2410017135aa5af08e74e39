@@ -1,0 +1,44 @@
+package com.etermax.rpg.utils;
+
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ExitCodeGenerator;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmbeddedRedis implements ExitCodeGenerator, DisposableBean {
+
+	private @Value("${redis.host}") String redisHost;
+    private @Value("${redis.port}") int redisPort;
+
+    private RedisServer redisServer;
+
+    @PostConstruct
+    public void startRedis() throws IOException {
+        redisServer = new RedisServer(redisHost, redisPort);
+        redisServer.newRedisNode().s
+        redisServer.start();
+    }
+
+    @PreDestroy
+    public void stopRedis() {
+        redisServer.stop();
+    }
+
+    @Override
+    public int getExitCode() {
+        redisServer.stop();
+        return 0;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        redisServer.stop();
+    }
+
+}

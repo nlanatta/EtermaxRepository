@@ -1,0 +1,76 @@
+package com.etermax.rpg.services;
+
+import java.awt.Point;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.definitions.CharacterMapDefinition;
+import com.etermax.rpg.definitions.GameDefinition;
+import com.etermax.rpg.definitions.GamesDefinition;
+import com.etermax.rpg.exceptions.GameNotFoundException;
+import com.etermax.rpg.factory.CharacterFactory;
+import com.etermax.rpg.model.Game;
+import com.etermax.rpg.model.GameModel;
+import com.etermax.rpg.model.Rules;
+import com.etermax.rpg.utils.IdGenerator;
+import com.etermax.rpg.model.Character;
+
+@Component
+public class GameService {
+
+	@Autowired
+	private GameModel model;
+
+	@Autowired
+	private final CharacterFactory characterFactory = null;
+
+	private Rules rules;
+	
+	private GamesDefinition gamesDefinition;
+
+	public GameService() {
+	}
+
+	public Game newGame() {
+		GameDefinition gameDef = gamesDefinition.getDefaultGame();
+		
+		String gameId = IdGenerator.random();
+		Game game = new Game(gameId);
+		
+		ArrayList<Character> characters = new ArrayList<Character>();
+		for ( CharacterMapDefinition cmDef : gameDef.getCharacters().getCharacters() )
+		{
+			Character character = characterFactory.getCharacterById(cmDef.getType());
+			character.setPosition(new Point(cmDef.getPosX(), cmDef.getPosY()));
+			characters.add(character);
+		}
+		
+		game.setCharacters(characters);
+		
+		game.setRules(rules);
+		model.saveGame(game);
+		return game;
+	}
+
+	public Game getGame(String gameId) throws GameNotFoundException {
+		return model.loadGame(gameId);
+	}
+	
+	public void updateGame(Game game) {
+		model.saveGame(game);
+	}
+
+	public void setRulesDefinition(Rules rules) {
+		this.rules = rules;
+	}
+
+	public GamesDefinition getGamesDefinition() {
+		return gamesDefinition;
+	}
+
+	public void setGamesDefinition(GamesDefinition gamesDefinition) {
+		this.gamesDefinition = gamesDefinition;
+	}
+}

@@ -1,0 +1,46 @@
+package com.etermax.rpg.definitions;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="character")
+public class Character {
+	private List<String> factions;
+	private int level;
+	private String type;
+	private int health;
+	private int rangeAttack;
+	public List<String> getFactions() {
+		return factions;
+	}
+	public void setFactions(String factions) {
+		this.factions = new ArrayList<>(Arrays.asList(factions.split(",")));
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public int getHealth() {
+		return health;
+	}
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public int getRangeAttack() {
+		return rangeAttack;
+	}
+	public void setRangeAttack(int rangeAttack) {
+		this.rangeAttack = rangeAttack;
+	}
+}

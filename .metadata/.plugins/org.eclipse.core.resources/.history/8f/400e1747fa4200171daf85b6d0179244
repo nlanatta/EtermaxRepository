@@ -1,0 +1,39 @@
+package com.etermax.rpg.factory;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.model.Game;
+import com.etermax.rpg.model.GameModel;
+
+@Component
+public class GameFactory {
+  private final HashMap<String, Game> allGames = new HashMap<String, Game>(1);
+  private final GameModel model = new GameModel();
+  
+  @Autowired
+  private CharacterFactory characterFactory = new CharacterFactory();
+//  private final SessionController sessionController = new SessionController();
+
+  public GameFactory(){
+  }
+
+  public Game newGame(String sessionId)  {
+    String gameId = "1";// Identifiers.random();
+    Game game = new Game(gameId, sessionId);
+//    model.saveGame(game);
+//    // Register game to session
+//    sessionController.setSessionGame(sessionId, gameId);
+    return game;
+  }
+
+  public Game getGame(String sessionId, String gameId)  {
+    return model.loadGame(gameId);
+  }
+
+  public List<Game> getGames(String sessionId)  {
+    return model.loadGames(sessionId);
+  }
+}

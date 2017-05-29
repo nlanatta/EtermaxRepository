@@ -1,0 +1,29 @@
+package com.etermax.rpg.definitions;
+
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name="game")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class GameDefinition {
+	private String name;
+	
+	private List<CharacterMapDefinition> characters;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<CharacterMapDefinition> getCharacters() {
+		return characters;
+	}
+	public void setCharacters(List<CharacterMapDefinition> characters) {
+		this.characters = characters;
+	}
+}

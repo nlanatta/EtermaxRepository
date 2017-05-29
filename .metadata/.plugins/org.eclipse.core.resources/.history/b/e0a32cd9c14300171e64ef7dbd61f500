@@ -1,0 +1,30 @@
+package com.etermax.rpg;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+
+import com.etermax.rpg.services.RedisServices;
+
+@SpringBootApplication
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+public class Application {
+
+	public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+        
+//        RedisServices redisService = (RedisServices) ctx.getBean(RedisServices.class);
+//        redisService.setValue("key", "hello world!");
+//
+//       System.out.println("message: " + redisService.getValue("key"));
+//        try {
+//			Thread.sleep(1000 * 6);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        System.out.println("message: " + redisService.getValue("key"));
+    }
+}

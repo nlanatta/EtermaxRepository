@@ -1,0 +1,11 @@
+package com.etermax.rpg.model;
+
+import java.util.ArrayList;
+
+public class Rules {
+
+	private ArrayList<IRule> rules;
+	
+	public Rules() {
+	}
+}

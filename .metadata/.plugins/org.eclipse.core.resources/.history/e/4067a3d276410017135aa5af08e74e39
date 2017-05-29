@@ -1,0 +1,9 @@
+package com.etermax.rpg.definitions;
+
+public class CharacterDefinition {
+	private String faction;
+	private int level;
+	private String type;
+	private int health;
+	private int rangeAttack;
+}

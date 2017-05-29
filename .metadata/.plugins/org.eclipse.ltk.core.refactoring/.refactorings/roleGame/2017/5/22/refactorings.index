@@ -1,0 +1,16 @@
+1495936882794	Rename type 'GameFactory'
+1495936904608	Rename field 'gameFactory'
+1495937419794	Encapsulate field 'position'
+1495989279955	Delete element
+1495989299964	Copy file
+1495990149150	Encapsulate field 'name'
+1495990155868	Encapsulate field 'characters'
+1495991173866	Rename field 'gameFactory'
+1495991201390	Move compilation unit
+1495991365875	Encapsulate field 'gamesDefinition'
+1495995718443	Delete element
+1495995727811	Delete element
+1495995732834	Delete element
+1495995741305	Delete element
+1495995748048	Delete element
+1495999791419	Copy compilation unit

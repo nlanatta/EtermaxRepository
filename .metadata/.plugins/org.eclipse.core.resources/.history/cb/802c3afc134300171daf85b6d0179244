@@ -1,0 +1,27 @@
+package com.etermax.rpg.factory;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.definitions.CharacterDefinition;
+import com.etermax.rpg.definitions.CharactersDefinition;
+import com.etermax.rpg.model.Character;
+import com.etermax.rpg.services.RedisServices;
+
+@Component
+public class CharacterFactory {
+
+	@Autowired
+	private RedisServices redisService;
+	
+	private CharactersDefinition charactersDefinition;
+
+	public void setCharactersDefinition(CharactersDefinition charactersDefinition) {
+		this.charactersDefinition = charactersDefinition;
+	}
+	
+	public Character getCharacterById(String id)
+	{
+		return new Character(charactersDefinition.getCharacterMap().get(id));
+	}
+}

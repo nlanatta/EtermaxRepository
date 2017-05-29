@@ -1,0 +1,10 @@
+package com.etermax.rpg.definitions;
+
+import java.util.ArrayList;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="characters")
+public class CharactersDefinition {
+	private ArrayList<CharacterDefinition> characters;
+}

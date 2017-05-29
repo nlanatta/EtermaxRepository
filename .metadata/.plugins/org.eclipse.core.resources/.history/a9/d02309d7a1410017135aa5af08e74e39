@@ -1,0 +1,20 @@
+package com.etermax.rpg.utils;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.boot.ExitCodeGenerator;
+
+public class EmbeddedRedis implements ExitCodeGenerator, DisposableBean {
+
+	@Override
+	public void destroy() throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getExitCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

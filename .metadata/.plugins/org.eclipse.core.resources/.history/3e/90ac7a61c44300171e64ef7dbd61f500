@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<games>
+	<game name="primero">
+		<characters>
+			<character type="Melee">
+				<position x=10 y=10 />				
+			</character>
+			<character type="Ranged">
+				<position x=20 y=20 />				
+			</character>
+		</characters>
+	</game>
+</games>

@@ -1,0 +1,90 @@
+package com.etermax.rpg.model;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Game {
+
+	private String id;
+	private String session;
+	private String name;
+	private Set<String> users;
+	private ArrayList<Character> characters;
+	private HashMap<String, Character> charactersMap;
+	private String rules;
+
+	public Game() {
+	}
+
+	public Game(String id, String session) {
+		this.id = id;
+		this.session = session;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getSession() {
+		return session;
+	}
+
+	public void setSession(String sessionId) {
+		this.session = sessionId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<String> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<String> users) {
+		this.users = users;
+	}
+
+	public void setUser(String user) {
+		if (users == null) {
+			users = new HashSet<String>();
+		}
+		users.add(user);
+	}
+
+	public String getRules() {
+		return rules;
+	}
+
+	public void setRules(String rules) {
+		this.rules = rules;
+	}
+
+	public ArrayList<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(ArrayList<Character> characters) {
+		this.characters = characters;
+		charactersMap = new HashMap<String, Character>(); 
+		for (Character character: characters)
+		{
+			charactersMap.put(character.getId(), character);
+		}
+	}
+	
+	public Character getCharacterById(String id)
+	{
+		return charactersMap.get(id);
+	}
+}

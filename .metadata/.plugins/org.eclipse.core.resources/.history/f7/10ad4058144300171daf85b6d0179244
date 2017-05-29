@@ -1,0 +1,19 @@
+package com.etermax.rpg.model;
+
+import java.util.List;
+
+import com.etermax.rpg.definitions.CharacterDefinition;
+
+public class Character {
+	
+	private List<String> factions;
+	private int level;
+	private String type;
+	private int health;
+	private int rangeAttack;
+	
+	public Character(CharacterDefinition characterDefinition)
+	{
+		
+	}
+}

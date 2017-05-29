@@ -1,0 +1,24 @@
+package com.etermax.rpg.definitions;
+
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="characters")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class CharactersDefinition {
+	
+    @XmlElement(name = "character")
+	private List<CharacterDefinition> characters = null;
+
+	public List<CharacterDefinition> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(List<CharacterDefinition> characters) {
+		this.characters = characters;
+	}
+}

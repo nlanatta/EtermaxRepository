@@ -1,0 +1,56 @@
+package com.etermax.rpg.services;
+
+
+@Component
+public class GameService {
+
+	@Autowired
+	private GameModel model;
+
+	@Autowired
+	private final CharacterFactory characterFactory = null;
+
+	private Rules rules;
+	
+	private GamesDefinition gamesDefinition;
+
+	public GameService() {
+	}
+
+	public Game newGame() {
+		GameDefinition gameDef = gamesDefinition.getDefaultGame();
+		
+		String gameId = IdGenerator.random();
+		Game game = new Game(gameId);
+		
+		ArrayList<Character> characters = new ArrayList<>();
+		for ( CharacterMapDefinition cmDef : gameDef.getCharacters().getCharacters() )
+		{
+			
+		}
+		
+		game.setRules(rules);
+		model.saveGame(game);
+		return game;
+	}
+
+	public Game getGame(String gameId) throws GameNotFoundException {
+		return model.loadGame(gameId);
+	}
+	
+	public void updateGame(Game game) {
+		model.saveGame(game);
+	}
+
+	public void setRulesDefinition(Rules rules) {
+		this.rules = rules;
+	}
+
+	public GamesDefinition getGamesDefinition() {
+		return gamesDefinition;
+	}
+
+	public void setGamesDefinition(GamesDefinition gamesDefinition) {
+		this.gamesDefinition = gamesDefinition;
+	}
+}

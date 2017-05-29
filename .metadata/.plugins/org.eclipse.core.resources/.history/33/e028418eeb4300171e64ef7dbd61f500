@@ -1,0 +1,6 @@
+package com.etermax.rpg.model;
+
+public interface IPlayable {
+	public void heal(int heal);
+	public void damage(int damage);
+}

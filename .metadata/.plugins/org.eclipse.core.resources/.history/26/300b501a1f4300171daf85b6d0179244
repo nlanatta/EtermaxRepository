@@ -1,0 +1,16 @@
+package com.etermax.rpg.model;
+
+public class Rules {
+
+  private String id;
+  private String name;
+  private String[] categories;
+  private Integer[] users;
+  private Integer teams;
+  private String[] phases;
+  private String[] moves;
+  private String initialState;
+
+  public Rules() {
+  }
+}

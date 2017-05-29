@@ -1,0 +1,10 @@
+package com.etermax.rpg.utils;
+
+import java.util.ArrayList;
+
+public class Utils {
+	public static boolean containSomeElement(ArrayList<String> a, ArrayList<String> b ) {
+boolean result;
+		return result;
+	}
+}

@@ -1,0 +1,34 @@
+package com.etermax.rpg.model;
+
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.exceptions.GameNotFoundException;
+
+@Component
+public class GameModel {	
+
+  public void saveGame(Game game)  {
+    // check session
+//    String sessionId = game.getSession();
+//    if (sessionModel.loadSession(sessionId) == null ) {
+//      throw new SessionNotFoundException(sessionId);
+//    }
+//    mapper.save(game);
+  }
+
+  public Game loadGame(String gameId) throws GameNotFoundException  {
+    Game game = null;//mapper.load(Game.class, gameId);
+    if ( game == null ) {
+      throw new GameNotFoundException(gameId);
+    }
+    return game;
+  }
+
+
+
+  public void deleteGame(String gameId)  {
+
+  }
+}

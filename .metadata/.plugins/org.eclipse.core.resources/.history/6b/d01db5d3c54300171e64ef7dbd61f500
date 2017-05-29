@@ -1,0 +1,7 @@
+package com.etermax.rpg.definitions;
+
+public class CharacterMapDefinition {
+	private String type;
+	private int posX;
+	private int posY;
+}

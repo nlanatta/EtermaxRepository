@@ -1,0 +1,11 @@
+package com.etermax.rpg.model;
+
+import com.etermax.rpg.definitions.CharacterDefinition;
+
+public class Character {
+	
+	public Character(CharacterDefinition characterDefinition)
+	{
+		
+	}
+}

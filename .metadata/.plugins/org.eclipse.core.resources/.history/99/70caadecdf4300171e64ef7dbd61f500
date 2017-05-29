@@ -1,0 +1,59 @@
+package com.etermax.rpg.definitions;
+
+import java.awt.Point;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.etermax.rpg.model.IRule;
+
+@XmlRootElement(name="rule")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class RuleDefinition {
+
+	@XmlAttribute
+	private int id;
+	
+	@XmlAttribute
+	private String type;
+	
+	@XmlAttribute
+	private int range;
+	
+	@Override
+	public boolean canAttack(String type) {
+		return type.equals(type);
+	}
+
+	@Override
+	public boolean isInRange(Point character1, Point character2) {
+		return ;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+}

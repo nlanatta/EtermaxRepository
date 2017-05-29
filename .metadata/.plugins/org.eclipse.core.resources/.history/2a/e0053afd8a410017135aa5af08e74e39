@@ -1,0 +1,7 @@
+package com.etermax.rpg.definitions;
+
+import java.util.ArrayList;
+
+public class CharactersDefinition {
+	private ArrayList<Character> characters;
+}

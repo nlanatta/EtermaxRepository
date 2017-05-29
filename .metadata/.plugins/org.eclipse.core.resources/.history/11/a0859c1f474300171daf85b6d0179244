@@ -1,0 +1,109 @@
+package com.etermax.rpg.controller;
+
+import java.util.List;
+import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.etermax.rpg.exceptions.GameNotFoundException;
+import com.etermax.rpg.factory.GameFactory;
+import com.etermax.rpg.model.Game;
+import com.etermax.rpg.model.GameModel;
+
+@RestController
+@RequestMapping(value = "/api/game/{sessionId}")
+public class GameController {
+	
+	@Autowired
+	private GameFactory gameFactory;
+	
+	@Autowired
+	private GameModel model;
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	/* GET /game/SESSION/ */
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Game> getGames(@PathVariable String sessionId) {
+		return gameFactory.getGames(sessionId);
+	}
+
+	/* POST /game/SESSION/ */
+	@RequestMapping(method = RequestMethod.POST)
+	public Game newGame(@PathVariable String sessionId) {
+		logger.info("Creating game");
+		return gameFactory.newGame(sessionId);
+	}
+
+	/* GET /game/SESSION/GAME */
+	@RequestMapping(value = "/{gameId}", method = RequestMethod.GET)
+	public Game getGame(@PathVariable String sessionId, @PathVariable String gameId) throws GameNotFoundException {
+		return gameFactory.getGame(sessionId, gameId);
+	}
+
+	/* PUT /game/SESSION/GAME */
+	@RequestMapping(value = "/{gameId}", method = RequestMethod.PUT)
+	public Game updateGame(@PathVariable String sessionId, @PathVariable String gameId, @RequestBody Game game) {
+		model.saveGame(game);
+		return game;
+	}
+
+	/* DELETE /game/SESSION/GAME */
+	@RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
+	public void deleteGame(@PathVariable String sessionId, @PathVariable String gameId) {
+		model.deleteGame(sessionId, gameId);
+	}
+
+	/* GET /game/SESSION/GAME/name */
+	@RequestMapping(value = "/{gameId}/name", method = RequestMethod.GET)
+	public String getGameName(@PathVariable String sessionId, @PathVariable String gameId) {
+		return gameFactory.getGame(sessionId, gameId).getName();
+	}
+
+	/* PUT /game/SESSION/GAME/name/NAME */
+	@RequestMapping(value = "/{gameId}/name/{name}", method = RequestMethod.PUT)
+	public void setGameName(@PathVariable String sessionId, @PathVariable String gameId, @PathVariable String name) {
+		Game game = gameFactory.getGame(sessionId, gameId);
+		game.setName(name);
+		model.saveGame(game);
+	}
+
+	/* GET /game/SESSION/GAME/user */
+	@RequestMapping(value = "/{gameId}/user", method = RequestMethod.GET)
+	public Set<String> getGameUsers(@PathVariable String sessionId, @PathVariable String gameId) {
+		return gameFactory.getGame(sessionId, gameId).getUsers();
+	}
+
+	/* PUT /game/SESSION/GAME/user/USER */
+	@RequestMapping(value = "/{gameId}/user/{user}", method = RequestMethod.PUT)
+	public void setGameUser(@PathVariable String sessionId, @PathVariable String gameId, @PathVariable String user) {
+		Game game = gameFactory.getGame(sessionId, gameId);
+		game.setUser(user);
+		model.saveGame(game);
+	}
+
+	/* POST /game/SESSION/GAME/users */
+	@RequestMapping(value = "/{gameId}/users", method = RequestMethod.POST)
+	public void setGameUsers(@PathVariable String sessionId, @PathVariable String gameId,
+			@RequestBody Set<String> users) {
+		Game game = gameFactory.getGame(sessionId, gameId);
+		game.setUsers(users);
+		model.saveGame(game);
+	}
+
+	/** PUT /game/SESSION/GAME/move/MOVE **/
+	@RequestMapping(value = "/{gameId}/move/{moveId}", method = RequestMethod.PUT)
+	public void setGameMove(@PathVariable String sessionId, @PathVariable String gameId, @PathVariable String moveId) {
+		Game game = gameFactory.getGame(sessionId, gameId);
+		// game.setMove(moveId);
+		model.saveGame(game);
+	}
+
+}

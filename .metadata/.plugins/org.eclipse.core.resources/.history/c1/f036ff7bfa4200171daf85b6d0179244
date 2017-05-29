@@ -1,0 +1,5 @@
+package com.etermax.rpg.factory;
+
+public class CharacterFactory {
+
+}

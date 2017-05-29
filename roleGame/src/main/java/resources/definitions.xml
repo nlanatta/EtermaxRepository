@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characters>
+	<character name="pedro" factions="1,2,3,4,5" level="1" type="Melee"
+		health="1000" rangeAttack="2" />
+	<character name="maria" factions="1,2,3,4,5" level="3" type="Ranged"
+		health="1000" rangeAttack="20" />
+</characters>

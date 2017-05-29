@@ -1,0 +1,23 @@
+package com.etermax.rpg.definitions;
+
+import com.etermax.rpg.model.IRule;
+
+public class RuleDefinition implements IRule {
+
+	private String type;
+	
+	private int range;
+	
+	@Override
+	public boolean canAttack() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isInRange() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

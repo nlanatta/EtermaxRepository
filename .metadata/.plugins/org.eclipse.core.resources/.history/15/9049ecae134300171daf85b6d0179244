@@ -1,0 +1,15 @@
+package com.etermax.rpg.factory;
+
+import org.springframework.stereotype.Component;
+
+import com.etermax.rpg.definitions.CharactersDefinition;
+
+@Component
+public class CharacterFactory {
+
+	private CharactersDefinition charactersDefinition;
+
+	public void setCharactersDefinition(CharactersDefinition charactersDefinition) {
+		this.charactersDefinition = charactersDefinition;
+	}
+}

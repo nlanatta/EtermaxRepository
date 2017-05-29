@@ -1,0 +1,19 @@
+package com.etermax.rpg.utils;
+
+import java.util.ArrayList;
+
+public class Utils {
+	public static boolean containSomeElement(ArrayList<String> a, ArrayList<String> b) {
+		
+		for( String value1 : a ){
+			for ( String value2 : b){
+				if (value1.equals(value2))
+				{
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+}

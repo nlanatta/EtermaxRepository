@@ -1,0 +1,11 @@
+package com.etermax.rpg.definitions;
+
+import java.util.List;
+
+public class CharacterDefinition {
+	private List<String> faction;
+	private int level;
+	private String type;
+	private int health;
+	private int rangeAttack;
+}

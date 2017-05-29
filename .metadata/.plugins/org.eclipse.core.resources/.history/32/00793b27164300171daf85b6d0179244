@@ -1,0 +1,5 @@
+package com.etermax.rpg.model;
+
+public interface IPlayable {
+
+}

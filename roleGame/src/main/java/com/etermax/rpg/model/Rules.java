@@ -1,0 +1,29 @@
+package com.etermax.rpg.model;
+
+import java.util.ArrayList;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.etermax.rpg.definitions.RuleDefinition;
+
+@XmlRootElement(name="rules")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Rules {
+
+	@XmlElement(name = "rule")
+	private ArrayList<RuleDefinition> rules;
+	
+	public Rules() {
+	}
+
+	public ArrayList<RuleDefinition> getRules() {
+		return rules;
+	}
+
+	public void setRules(ArrayList<RuleDefinition> rules) {
+		this.rules = rules;
+	}
+}
